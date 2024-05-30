@@ -3,8 +3,7 @@
 * Lego Store App
 * By: Vladislav Zolotukhin Date: 2024-04-20
 *
-* Published URL: https://vzolotukhin-web322-assign.onrender.com/   (1st choice)
-                 https://strange-toad-jewelry.cyclic.app (backup)
+* Published URL: https://vzolotukhin-legoapp.onrender.com/   
 *
 ********************************************************************************/
 

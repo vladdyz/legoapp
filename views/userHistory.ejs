@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Lego Collection</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <div class="navbar bg-base-100 relative z-10">
+        <%- include('partials/navbar', {page: '/userHistory'}) %>
+        </div>
+
+        <!--DaisyUI Hero Element-->
+
+        <div class="hero min-h-screen bg-base-200 relative border border-purple-200 rounded-lg" style="background-image: url('/legoCastle-chatgptAI.png'); background-size: cover;"> 
+            <div class="hero-content text-center ">
+              <div class="max-w-md nset-0 bg-base-200 relative border border-red-200 rounded-lg p-6 hero-overlay bg-opacity-60">
+                <h1 class="text-5xl font-bold"><%= session.user.userName %></h1>
+                <p class="py-6"><%= session.user.email %></p>
+              </div>
+            </div>
+          </div>
+
+          <!--DaisyUI Table-->
+
+          <div class="overflow-x-auto">
+            <table class="table table-zebra">
+              <thead>
+                <tr>
+                  <th>Login Date/Time</th>
+                  <th>Client Information</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% session.user.loginHistory.forEach(loginHistory => { %>
+                <tr>
+                  <td><%= new Date(loginHistory.dateTime).toLocaleString() %></td> <!--displaying the date in its proper format-->
+                  <td><%= loginHistory.userAgent %></td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+
+
+
+    </body>

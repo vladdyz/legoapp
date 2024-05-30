@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Lego Collection</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+    <!--Navbar code from: https://webprogrammingtoolsandframeworks.sdds.ca/UI-Toolkits/tailwind-css-daisyui#theming-->
+    <%- include('partials/navbar', {page: ''}) %>
+    
+      <div class="container mx-auto">
+        <!--Hero DaisyUI Element -->
+        <div class="hero min-h-screen bg-base-200">
+          <div class="hero-content text-center">
+            <div class="max-w-md">
+              <h1 class="text-5xl font-bold">Welcome!</h1>
+              <p class="py-6">Please feel free to explore the site and check out the Lego Collections available.</p>
+              <button class="btn btn-primary"><a href="/lego/sets">Check out the sets!</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--3 Sample Cards in a 3 Column Format-->
+      <div class="container mx-auto">
+        <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
+       
+            <!--Card #1-->
+            <div class="card mx-auto w-96 glass">
+              <figure>
+                <img src="https://cdn.rebrickable.com/media/sets/71024-16.jpg" alt="Jack Skellington" />
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">Jack Skellington</h2>
+                <p>Released in 2019. Comes in 10 parts. Part of the Disney Series 2 theme.</p>
+                <div class="card-actions justify-end">
+                  <button class="btn btn-primary"><a href="/lego/sets/71024-16">Buy It!</a></button>
+                </div>
+              </div>
+            </div>
+         
+        
+            <!--Card #2-->
+            <div class="card mx-auto w-96 glass">
+              <figure>
+                <img src="https://cdn.rebrickable.com/media/sets/43108-11.jpg" alt="Vampire Bassist" />
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">Vampire Bassist</h2>
+                <p>Released in 2021. Comes in 10 parts. Part of the VIDIYO theme.</p>
+                <div class="card-actions justify-end">
+                  <button class="btn btn-primary"><a href="/lego/sets/43108-11">Buy It!</a></button>
+                </div>
+              </div>
+            </div>
+        
+          
+            <!--Card #3-->
+            <div class="card mx-auto w-96 glass">
+              <figure>
+                <img src="https://cdn.rebrickable.com/media/sets/10273-1.jpg" alt="Haunted House" />
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">Haunted House</h2>
+                <p>Released in 2020. Comes in 3232 parts. Part of the Icons theme.</p>
+                <div class="card-actions justify-end">
+                  <button class="btn btn-primary"><a href="/lego/sets/10273-1">Buy It!</a></button>
+                </div>
+              </div>
+            </div>
+         
+        </div>
+      </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

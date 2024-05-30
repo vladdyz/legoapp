@@ -1,0 +1,64 @@
+<!--Rendering the collection of lego sets-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Lego Collection</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <div class="navbar bg-base-100 relative z-10">
+      <%- include('partials/navbar', {page: '/lego/sets'}) %>
+        </div>
+          
+      <div class="container mx-auto p-4 min-h-screen relative border border-purple-200 rounded-lg overflow-hidden" style="background-image: url('/cropped-1920-1080-1345444.png'); background-size: cover;">
+        <!-- Hero DaisyUI Element -->
+        <div class="hero absolute inset-0 bg-base-200 rounded-lg p-6 hero-overlay bg-opacity-30">
+            <div class="hero-content text-center text-neutral-content">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Displaying Lego Collection</h1>
+                    <p class="py-6">Select each individual set for more details!</p>
+                    <p class="py-6">
+                        <button class="btn btn-secondary mt-2 mb-2 bg-opacity-70"><a href="/lego/sets?theme=Ultimate%20Collector%20Series">Ultimate</a></button>
+                        <button class="btn btn-dark-blue mt-2 mb-2 bg-opacity-70"><a href="/lego/sets?theme=Creator%20Expert">Expert</a></button>
+                        <button class="btn btn-success mt-2 mb-2 bg-opacity-70"><a href="/lego/sets?theme=Jurassic%20World">Jurassic</a></button>
+                        
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+          <!--Creating a dynamic table of the lego collections to be rendered-->
+          <div class="overflow-x-auto">
+            <table class="table-auto mx-auto w-full table-zebra border-b border-white 200">
+            <thead class="border-b border-white 200">
+            </thead>
+            <tbody>
+                <% sets.forEach(lego=>{ %>
+                    <tr class="border-b border-white-200">
+                        <!--Avatar-->
+                        <td class="py-2 pl-4 leading-6"><div class="avatar">
+                        <div class="w-24 rounded">
+                            <img src="<%= lego.img_url %>" alt="<%= lego.name %>"  />
+                        </div>
+                      </div></td>
+                      <!--Name and theme button-->
+                      <td class="py-2"><%= lego.name %> | <button class="btn btn-primary"><a href="/lego/sets/?theme=<%= lego.Theme.name %>"><%= lego.Theme.name %></a></button></td>
+                      <!--year released-->
+                      <td class="py-2"><div>Released in <%= lego.year %></div></td>
+                      <!-- number of parts-->
+                      <td class="py-2"><div>Contains <%= lego.num_parts %> parts</div></td>
+                      <!--details of set-->
+                      <td class="py-2"><button class="btn btn-secondary"><a href="/lego/sets/<%= lego.set_num %>">Details</a></button></td>
+                    </tr>
+                  <% }) %>
+
+            </tbody>
+            </table>
+    </body>

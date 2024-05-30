@@ -1,0 +1,71 @@
+<!--To render an individual lego set rather than a theme or whole collection, using the params route-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Lego Collection</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+      <div class="navbar bg-base-100 relative z-10">
+        <%- include('partials/navbar', {page: ''}) %>
+        </div>
+        <div class="container mx-auto p-4 min-h-screen relative border border-purple-200 rounded-lg overflow-hidden" style="background-image: url('/cropped-1920-1080-1345444.png'); background-size: cover;">
+            <div class="hero absolute inset-0 bg-base-200 rounded-lg p-6 hero-overlay bg-opacity-50">
+                <div class="hero-content text-center text-neutral-content">
+                <h1 class="text-5xl font-bold"><%= set.name %></h1>
+                <p class="py-6">Below you'll find information about the <%= set.name %> set! </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card lg:card-side bg-base-100 shadow-xl relative border border-red-200">
+            <figure id="imageContainer" style="max-width: 600px; max-height: 500px; height: auto; overflow: hidden;">
+                <img id="cardImage" src="<%= set.img_url %>" alt="Card Image" class="object-cover object-center cursor-pointer" />
+            </figure>
+            <div class="card-body">
+              <p><b>Set: </b><%= set.name %></p>
+              <p><b>Year Released: </b><%= set.year %></p>
+              <p><b>Theme: </b><%= set.Theme.name %></p>
+              <p><b>Number of parts: </b> <%= set.num_parts %></p>
+              <div class="quote"></div>
+              <div class="card-actions justify-end">
+                <button class="btn btn-secondary"><a href="#" onclick="history.back();" return false;>Return</a> </button>
+                <% if(session.user){ %> 
+                <button class="btn btn-success"><a href="/lego/editSet/<%= set.set_num %>">Edit Set</a></button>
+                <% } %>
+              </div>
+            </div>
+          </div>
+
+          <script>
+            document.addEventListener("DOMContentLoaded", async ()=> { //using await so the function must be asynchronous
+                const quoteDiv = document.querySelector('.quote'); //the div where my quote should be generated
+                /* "fetch" the data at: https://quotable.io/random and update an element in the DOM with the "content" and "author" */
+                try {
+                    const response = await fetch('https://api.quotable.io/random');
+                    const data = await response.json();
+            
+                    // If successful, update the DOM element with the quote content and author
+                     quoteDiv.innerHTML = `<p>"${data.content}"</p><p> -${data.author}</p>`;
+                 } catch (error) {
+                    console.error('Error fetching quote:', error); //otherwise be sad :(
+                    quoteDiv.innerHTML = '<p>Sometimes life gives you lemons. Sometimes unexpected errors occur - Hapless programmer</p>';
+                 }
+                 const cardImage = document.getElementById('cardImage');
+                
+                 //My images were sometimes too big and stretched out the card so I implemented a max resolution
+                 //However, this meant that some of them would now either be cut off or squished
+                 //Therefore functionality was given to create full sized pop ups of the images to view them properly
+                // Add click event listener to the image
+                cardImage.addEventListener('click', () => {
+                // Open a new window with the original size image
+                window.open('<%= set.img_url %>', '_blank', 'width=auto, height=auto');
+                });
+    });
+          
+        </script>
+        

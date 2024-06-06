@@ -7,5 +7,5 @@ Stores client sessions and user account information using MongoDB and bcrypt for
 
 Integrated Quotable API support.
 
-Live at: https://vzolotukhin-legoapp.onrender.com/
+Deployed at: https://vzolotukhin-legoapp.onrender.com/
 May take a couple of minutes to spin up, please be patient :)

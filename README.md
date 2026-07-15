@@ -1,4 +1,4 @@
-# legoapp
+# Lego Store
 Web app built with Express and Tailwind frameworks to display a customizable lego store inventory. A REST API retrieves and post data. 
 
 Uses EJS templates to render data from a Postgres database, supporting CRUD operations. 
